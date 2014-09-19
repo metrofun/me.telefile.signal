@@ -1,0 +1,28 @@
+{
+  "name": "me.telefile.signal",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/metrofun/me.telefile.signal.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/metrofun/me.telefile.signal/issues"
+  },
+  "homepage": "https://github.com/metrofun/me.telefile.signal",
+  "dependencies": {
+    "gulp": "^3.8.8",
+    "gulp-nodemon": "^1.0.4",
+    "jdataview": "^2.4.6",
+    "koa": "^0.11.0",
+    "koa-cors": "0.0.13",
+    "routes": "^1.2.0",
+    "sockjs": "^0.3.9"
+  }
+}
