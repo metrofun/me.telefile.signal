@@ -8,7 +8,7 @@ function RoomHub() {
 
 RoomHub.prototype = {
     PIN_LENGTH: 6,
-    ROOM_COLLECTOR_PERIOD: 5000,
+    ROOM_COLLECTOR_PERIOD: 30000,
 
     createRoom: function (transmitter) {
         var pin = this._getFreePin();
@@ -44,12 +44,12 @@ RoomHub.prototype = {
         var pin;
 
         do {
-            pin = this._generateHash();
+            pin = this._generatePin();
         } while (this._roomByPin[pin]);
 
         return pin;
     },
-    _generateHash: function () {
+    _generatePin: function () {
         return Array.apply(null, {length: this.PIN_LENGTH}).map(function () {
             return Math.floor(Math.random() * 10);
         }).join('');

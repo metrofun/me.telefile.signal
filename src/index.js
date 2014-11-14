@@ -1,18 +1,21 @@
 var app = require('koa')(),
     router = require('routes')(),
     cors = require('koa-cors'),
-    DataStreamFrame = require('../bower_components/me.telefile.www/src/libs/reactive-transport-frame.js'),
+    Frame = require('../bower_components/me.telefile.www/src/libs/reactive-transport-frame.js'),
     httpServer = require('http').createServer(app.callback()),
     sockjsServer = require('sockjs').createServer(),
     roomHub = require('./room-hub.js');
 
 router.addRoute('/v1/room/create/*', function (stream) {
+    // TODO check race condition
     var pin = roomHub.createRoom(stream);
 
-    stream.write(DataStreamFrame.encode(1, {meta: {id: pin}}));
+    stream.write(Frame.encode(1, {pin: pin}));
 });
 router.addRoute('/v1/room/:pin/*', function (stream, params) {
     roomHub.joinRoom(params.pin, stream);
+
+    stream.write(Frame.encode(1, {pin: params.pin}));
 });
 
 app.use(cors());
@@ -24,4 +27,4 @@ sockjsServer.on('connection', function (stream) {
     match.fn.apply(stream, [stream, match.params, match.splats]);
 });
 
-httpServer.listen(1111);
+httpServer.listen(80);
