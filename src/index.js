@@ -1,7 +1,7 @@
 var app = require('koa')(),
     router = require('routes')(),
     cors = require('koa-cors'),
-    Frame = require('../bower_components/me.telefile.www/src/libs/reactive-transport-frame.js'),
+    Frame = require('../node_modules/me.telefile.www/src/network/frame.js'),
     httpServer = require('http').createServer(app.callback()),
     sockjsServer = require('sockjs').createServer(),
     roomHub = require('./room-hub.js');
