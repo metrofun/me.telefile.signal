@@ -1,0 +1,18 @@
+{
+    "apps" : [{
+        "name"      : "SIGNAL",
+            "script"    : "src/index.js",
+            "node_args" : "--harmony"
+    }],
+    "deploy" : {
+        "aws" : {
+            "user" : "ubuntu",
+            "key": "./key.pem",
+            "host" : "54.77.70.154",
+            "ref"  : "origin/master",
+            "repo" : "git@github.com:metrofun/me.telefile.signal.git",
+            "path" : "/home/ubuntu/me.telefile.signal",
+            "post-deploy" : "npm install && pm2  -u www startOrRestart ecosystem.json"
+        }
+    }
+}
