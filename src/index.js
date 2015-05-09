@@ -20,7 +20,7 @@ router.addRoute('/v1/room/:pin/*', function (stream, params) {
 
 app.use(cors());
 
-sockjsServer.installHandlers(httpServer, {prefix: '[/]v1[/]room[/](?:create|[0-9]{6})'});
+sockjsServer.installHandlers(httpServer, {prefix: '[/]v1[/]room[/](?:create|[0-9]{4})'});
 sockjsServer.on('connection', function (stream) {
     var match = router.match(stream.pathname);
 

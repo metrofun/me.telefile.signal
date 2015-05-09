@@ -7,7 +7,7 @@ function RoomHub() {
 }
 
 RoomHub.prototype = {
-    PIN_LENGTH: 6,
+    PIN_LENGTH: 4,
     ROOM_COLLECTOR_PERIOD: 30 * 60 * 60 * 1000,
 
     createRoom: function (transmitter) {
