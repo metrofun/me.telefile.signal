@@ -1,6 +1,7 @@
-function Room(transmitter) {
+function Room(transmitter, onDestroy) {
     this._transmitter = transmitter;
     this._transmitter.on('close', this.destroy.bind(this));
+    this._onDestroy = onDestroy;
 
     this.createdOn = Date.now();
 }
@@ -12,6 +13,10 @@ Room.prototype = {
         });
         delete this._receiver;
         delete this._transmitter;
+
+        if (this._onDestroy) {
+            this._onDestroy();
+        }
     },
     connect: function (receiver) {
         this._receiver = receiver;

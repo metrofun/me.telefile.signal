@@ -11,9 +11,11 @@ RoomHub.prototype = {
     ROOM_COLLECTOR_PERIOD: 30 * 60 * 60 * 1000,
 
     createRoom: function (transmitter) {
-        var pin = this._getFreePin();
+        var pin = this._getFreePin(), that = this;
 
-        this._roomByPin[pin] = new Room(transmitter);
+        this._roomByPin[pin] = new Room(transmitter, function() {
+            delete that._roomByPin[pin];
+        });
 
         return pin;
     },
@@ -34,7 +36,6 @@ RoomHub.prototype = {
 
             if (now - room.createdOn > this.ROOM_COLLECTOR_PERIOD) {
                 room.destroy();
-                delete this._roomByPin[pin];
             }
         }
 
