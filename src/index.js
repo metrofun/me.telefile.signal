@@ -27,5 +27,5 @@ sockjsServer.on('connection', function (stream) {
     match.fn.apply(stream, [stream, match.params, match.splats]);
 });
 
-httpServer.listen(80);
-// httpServer.listen(8888);
+// Please use iptables to redirect connections on port 80
+httpServer.listen(8080);
