@@ -8,7 +8,7 @@
         "production" : {
             "user" : "www",
             "key" : "~/.ssh/telefileme",
-            "host" : "35.185.102.121",
+            "host" : "35.197.198.75",
             "ref" : "origin/master",
             "repo" : "git@github.com:metrofun/me.telefile.signal.git",
             "path" : "/var/www/production",
